@@ -1,9 +1,0 @@
-﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<IEnumerable<IPublishedElement>>
-@{
-	var sections = Model;
-}
-@if (sections.Any()) {
-	foreach (var section in sections.Where(p => p.IsVisible())) {
-		@Html.Partial("Sections/" + section.ContentType.Alias, section)
-	}
-}

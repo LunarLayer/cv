@@ -1,1 +1,0 @@
-import initAnimator from"./modules/animator.js";export default function(){initAnimator()}
