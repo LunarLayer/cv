@@ -1,0 +1,20 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<Project>
+@(
+    var header = element.Header;
+    var subheader = element.Subheader;
+	var tags = element.Tags;
+	var image = element.Image;
+)
+
+<div class="project">
+	<a href="https://windcarrier.com/" data-item="Windcarrier.com">Windcarrier.com</a>
+	<figure class="project-details">
+		<img src="media/Project_Windcarrier_1600x1079.jpg" alt="Global Wind Service Website Screenshot">
+		<figcaption>
+			<div class="link-icon"></div>
+			<h2>Made in collaboration with Vokseverk during my internship</h2>
+			<p>Umbraco - Figma - Frontend</p>
+			<a href="https://windcarrier.com/" target="_blank"></a>
+		</figcaption>
+	</figure>
+</div>

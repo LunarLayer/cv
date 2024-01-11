@@ -1,0 +1,91 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<AbilitiesSection>
+    
+
+@{
+	var quotes = Umbraco.Content(Guid.Parse("b14827e4-bfa9-4352-a0c7-00ee4f4dd2d8"))
+    .ChildrenOfType("abilitiesQuote")
+    .Where(x => x.IsVisible());
+}
+
+
+    
+<section id="abilities" class="abilities-panel animated">
+
+	<div class="header">
+		<h1>Abilities<span class="animated-dot"></span></h1>
+		@foreach (AbilitiesQuote quote in quotes) { @(quote.Quote) }
+	</div>
+
+    <hr class="spacer">
+    
+	<div class="content">
+		<div class="abilities">
+        @{
+        	var categories = Umbraco.Content(Guid.Parse("b14827e4-bfa9-4352-a0c7-00ee4f4dd2d8"))
+            .ChildrenOfType("category").Where(x => x.IsVisible());
+
+        	foreach(Category category in categories) {
+        	    var abilities = category.ChildrenOfType("ability").Where(x => x.IsVisible()).OrderByDescending(x => x.Value("stars"));
+        	    
+        			<h3 data-item='@(category.Name)'>@(category.Name)</h3>
+        			<ul>
+        			    @foreach(Ability ability in abilities) {
+            				<li>
+            				<span>@(ability.Title)</span>
+                				<div class="stars">
+                                    <p data-item='@(ability.Stars)'>@(ability.Stars)</p>
+                    				@GetStars(ability.Stars.Length)
+                                </div>
+                            </li>		
+        			    }
+        			</ul>
+        	}
+        }
+        	
+        	<h3 data-item='Recommendations'>Recommendations</h3>
+        	<div class="recommendations">
+        	
+        	    @{
+                	var recommendations = Umbraco.Content(Guid.Parse("364b24ed-8d5f-4dab-88c6-e069694303c0"))
+                    .ChildrenOfType("recommendation").Where(x => x.IsVisible());
+                    
+                	foreach(Recommendation recommendation in recommendations) { 
+                	    <div class="recommendation">
+                    	    @(recommendation.Header)
+                        	@(recommendation.Description) 
+                    	</div>
+                	}
+            	}
+        	</div>
+        
+		</div>
+        
+        <a href="#projects" class="navigation-arrow"></a>
+	</div>
+</section>
+
+@functions{
+    public string GetStars(int length){
+        string result = "";
+        
+        switch(length) {
+            case 5:
+                result = "";
+            break;
+            case 4:
+                result = "☆";
+            break;
+            case 3:
+                result = "☆☆";
+            break;
+            case 2:
+                result = "☆☆☆";
+            break;
+            case 1:
+                result = "☆☆☆☆";
+            break;
+        }
+        return result;
+    }
+}
+

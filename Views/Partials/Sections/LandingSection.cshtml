@@ -1,0 +1,27 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<LandingSection>
+@{
+    var element = Model;
+   
+    var header = element.Header;
+    var subheader = element.Subheader;
+	var image = element.Image; 
+}
+
+<section id="landing" class="landing">
+    <div class="image-reveal">
+    	<img src="@(image.Url)">
+    	<div class="trigger"></div>
+    	<div class="cover"></div>
+        <div class="name-reveal">
+        	<div class="name">
+    			<span class="block"></span>
+    			<h1>@(header)<span></span></h1>
+    	    </div>
+        	<div class="title">
+        		<p>@(subheader)
+        		    <a href="#profile" class="navigation-arrow"></a>
+                </p>
+        	</div>
+        </div>
+    </div>
+</section>

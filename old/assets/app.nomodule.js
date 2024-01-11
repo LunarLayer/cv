@@ -1,0 +1,1 @@
+import initialize from"./modules/app.js";initialize();

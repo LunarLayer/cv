@@ -1,0 +1,40 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<ContactSection>
+@{
+    var element = Model;
+   
+    var quote = element.Quote;
+    var phone = element.Phone;
+    var email = element.Email;
+    var linkedin = element.Linkedin;
+	var image = element.Image; 
+}
+
+<section id="contact" class="contact-panel animated">
+	<div class="header">
+		<h1>Contact<span class="animated-dot"></span></h1>
+		<p>@(quote)</p>
+	</div>
+	
+    <hr class="spacer">	
+	
+	<div class="content">
+		<div class="contact-details">
+			<div class="phone">
+				<h2 data-item="Phone">Phone</h2>
+				<a href="tel:+4531716811">@(phone)</a>
+			</div>
+			<div class="email">
+				<h2 data-item="Email">Email</h2>
+				<a href="mailto:@(email)">@(email)</a>
+			</div>
+			<div class="linkedin">
+				<h2 data-item="LinkedIn">LinkedIn</h2>
+				<a href="https://@(linkedin)" target="_blank" rel="noopener">@(linkedin)</a>
+			</div>
+		</div>
+	
+		<div class="image">
+			<img src="@(image.Url)">
+		</div>
+	</div>
+</section>

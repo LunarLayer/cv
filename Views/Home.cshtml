@@ -1,0 +1,11 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<Home>
+@using ContentModels = Umbraco.Web.PublishedModels;
+@{
+	Layout = "MasterLayout.cshtml";
+	
+	var currentPage = Model;
+	
+	var elements = currentPage.Children;
+}
+
+@Html.Partial("Elements/RenderElements", elements)     
