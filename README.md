@@ -1,2 +1,0 @@
-# cv
-Online resume / CV

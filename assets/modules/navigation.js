@@ -1,0 +1,1 @@
+console.log("navigation.js running...");export default function initialize(){initCompactMenu()}function initCompactMenu(){}
